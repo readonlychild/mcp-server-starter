@@ -31,6 +31,10 @@ export const handler = async (event) => {
     if (event.requestContext.http?.method == 'OPTIONS') {
       return { statusCode: 200, headers: baseHeaders, body: '' }
     }
+    if (!event.body) {
+      console.log('No body defined.');
+      return { statusCode: 200, headers: baseHeaders, body: '' }
+    }
 
     const payload = JSON.parse(event.body);
 
