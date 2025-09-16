@@ -40,6 +40,7 @@ export const handler = async (event) => {
         return resp; // JSON-RPC compliant
       } catch (ex1) {
         //logger.error('Tool handling error', { error: ex1.message });
+        console.log('ERR! ex1', ex1.message);
         if (req.id !== undefined) {
           return {
             jsonrpc: '2.0',
@@ -66,6 +67,7 @@ export const handler = async (event) => {
       response = resp === null ? '' : resp;
     }
 
+    console.log('RESPONSE', JSON.stringify(response));
     return {
       statusCode: 200,
       headers: baseHeaders,
@@ -74,6 +76,7 @@ export const handler = async (event) => {
 
   } catch (ex) {
     //logger.error('Invalid JSON or other error', { error: ex.message });
+    console.log('ERR! ex', ex.message);
     return {
       statusCode: 400,
       headers: baseHeaders,
