@@ -19,6 +19,7 @@ const transport = new StdioServerTransport();
 await server.connect(transport);
 
 export const handler = async (event) => {
+  console.log('EVENT', JSON.stringify(event, null, 2));
   const baseHeaders = {
     'content-type': 'application/json',
     'access-control-allow-origin': '*',
