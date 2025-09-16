@@ -36,7 +36,7 @@ export const handler = async (event) => {
 
     const handleSingle = async (req) => {
       try {
-        const resp = await server.handleRequest(req);
+        const resp = await server.rpc.dispatchRequest(req);
         return resp; // JSON-RPC compliant
       } catch (ex1) {
         //logger.error('Tool handling error', { error: ex1.message });
@@ -67,11 +67,15 @@ export const handler = async (event) => {
       response = resp === null ? '' : resp;
     }
 
-    console.log('RESPONSE', JSON.stringify(response));
+    if (response) {
+      console.log('RESPONSE', JSON.stringify(response));
+    } else {
+      console.log('RESPONSE', 'null');
+    }
     return {
       statusCode: 200,
       headers: baseHeaders,
-      body: JSON.stringify(response),
+      body: response ? JSON.stringify(response) : null,
     }
 
   } catch (ex) {
