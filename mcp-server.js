@@ -1,15 +1,12 @@
 import 'dotenv/config';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { DefaultLogger } from '@modelcontextprotocol/sdk/logging.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { pokeMonsterData } from './tools/pokemon.js';
-
-const logger = new DefaultLogger('debug');
 
 const server = new McpServer({
   name: 'MCP Server - Dervie',
   version: '1.0.0',
-}, { logger });
+});
 
 server.tool(
   pokeMonsterData.name,

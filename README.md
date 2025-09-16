@@ -17,5 +17,8 @@ The action needs two repo-level secrets:
 - AWS_ACCESS_KEY_ID
 - AWS_SECRET_ACCESS_KEY
 
+> First deploy: change the Runtime settings Handler to `mcp-server.handler`
+
+
 ## Extending
 
